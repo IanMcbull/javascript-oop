@@ -18,7 +18,13 @@ const myWife = {
         return this.age > 18;
     }
 };
-
+console.log(Object.getOwnPropertyDescriptor(myWife,'lastName'));
+Object.defineProperty(myWife,'firstName',{writable:false});
+Object.defineProperty(myWife,'fullNames',{get:function(){
+    return `${this.firstName} ${this.lastName}`
+}})
+console.log(myWife.fullNames)
+console.log(Object.getOwnPropertyDescriptor(myWife,'firstName'));
 //using functions to create an object
 function registerUser(fname,lname,age){
  let user = {
@@ -36,5 +42,6 @@ registerUser('Jack','Kamau',35);
 // ===
 // object.is
 
-console.log("ian" == "ian");
-console.log(24 === "24");
+//console.log("ian" == "ian");
+//console.log(24 === "24");
+//Object.is()
